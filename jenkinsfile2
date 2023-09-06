@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven'
+    }
+
+    stages{
+        stage('Build') {
+        steps{
+            sh 'mvn clean package'
+        }
+    }
+}
+}
+
+        stage('code scan stage') {
+            steps {
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=myproject'
+            }
+        }
